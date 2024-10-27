@@ -26,6 +26,7 @@ Install the dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
 
 ## Usage
 
@@ -33,6 +34,7 @@ pip install -r requirements.txt
 
 ```bash
 python run.py
+```
 
 ##Example
 
