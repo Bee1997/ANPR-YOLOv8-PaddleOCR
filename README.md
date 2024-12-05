@@ -1,6 +1,6 @@
 # Automatic Number Plate Recognition (ANPR) with YOLOv8 and PaddleOCR
 
-This project implements Automatic Number Plate Recognition (ANPR) using the YOLOv8 object detection model for vehicle detection and PaddleOCR for optical character recognition (OCR) of license plates. The application detects vehicles, recognizes license plates, and logs them to a CSV file.
+This project implements Automatic Number Plate Recognition (ANPR) using the YOLOv8 model for vehicle detection and tracking and PaddleOCR for optical character recognition (OCR) of license plates. The application detects vehicles, recognizes license plates, and logs them to a CSV file.
 
 ## Project Structure
 
@@ -11,7 +11,7 @@ This project implements Automatic Number Plate Recognition (ANPR) using the YOLO
 
 ## How It Works
 
-1. **Vehicle Detection**: YOLOv8 detects vehicles in the video frames.
+1. **Vehicle Detection and Tracking**: YOLOv8 detects vehicles in the video frames.
 2. **License Plate OCR**: PaddleOCR recognizes and extracts license plate numbers from detected vehicles.
 3. **CSV Logging**: Each unique vehicle’s license plate number is saved to `Car-List.csv`.
 4. **Annotated Video**: A video (`demoVideo_out.mp4`) is generated with annotated bounding boxes and recognized license plate numbers.
