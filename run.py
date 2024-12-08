@@ -33,6 +33,8 @@ video_write = cv2.VideoWriter('demoVideo_out.mp4',
 # Set to keep track of processed car IDs
 processed_ids = set()
 
+processing_times = []  # List to store processing times for each frame
+
 ocr_flag = [0]*10
 print("Program Started")
 with open(csv_file, mode='w', newline='') as file:
@@ -46,6 +48,9 @@ with open(csv_file, mode='w', newline='') as file:
 
     # Loop through the video frames
     while cap.isOpened():
+
+        start_frame_time = time.time()  # Start time for the frame
+
         success, frame = cap.read()
 
         if not success:
@@ -101,7 +106,13 @@ with open(csv_file, mode='w', newline='') as file:
                     # Add this car ID to the set of processed IDs
                     processed_ids.add(track_id)
 
-        # Write the frame into the outputfile
+       # End time for the frame
+        end_frame_time = time.time()
+        frame_processing_time = end_frame_time - start_frame_time
+
+        processing_times.append(frame_processing_time)  # Save the time for this frame
+       
+       # Write the frame into the outputfile
         video_write.write(annotated_frame) 
 
         # Display the annotated frame
@@ -112,6 +123,11 @@ with open(csv_file, mode='w', newline='') as file:
             break
 
 print("Total time: ", ((time.time())-start))
+
+# Calculate the average processing time after the loop
+avg_processing_time = np.mean(processing_times)
+print(f"Average processing time per frame: {avg_processing_time:.4f} seconds")
+
 print("Program Stopped")
 
 # Release the video capture and writing and close the display window
